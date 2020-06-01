@@ -1,0 +1,13 @@
+<div>
+  <input
+    name="searchBox"
+    [(ngModel)]="searchString"
+    placeholder="Search Here"
+    (keyup)="search()"
+  />
+</div>
+
+<h2>We have found{{ (stocks$ | async)?.length }}stocks!</h2>
+<!-- 若有則以?語法顯示，它標註該元素為選擇性的，因此能防止空值失敗 -->
+<app-stock-item *ngFor="let stock of stocks$ | async" [stock]="stock">
+</app-stock-item>
